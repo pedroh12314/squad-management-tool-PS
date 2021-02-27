@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.gradient {
+    background: linear-gradient(90deg, #c00f4f 0%, #8a206f 100%);
+}
+
+.vertical-gradient {
+    background: linear-gradient(180deg, #a9397a 0%, #8a206f 100%);
+}
+
+.custom-animation{
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+
+.custom-animation:hover {
+    transform: scale(1.07);
+}
+
+.icon {
+    margin: 0 5px;
+    font-size: 13px;
+    color: #a9397a;
+}
