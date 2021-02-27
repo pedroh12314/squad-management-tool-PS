@@ -1,0 +1,25 @@
+.navbar {
+    height: 50px;
+    width: 100%;
+}
+
+.name-profile {
+    line-height: 34px;
+    float: right;
+}
+
+.image-profile {
+    margin: 0 15px;
+    float: right;
+    background-color: rgb(216, 216, 216);
+    height: 34px;
+    width: 34px;
+    border-radius: 100%;
+}
+
+.initials {
+    text-align: center;
+    line-height: 34px;
+    height: 34px;
+    width: 34px;
+}
