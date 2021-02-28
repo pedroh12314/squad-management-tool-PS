@@ -1,0 +1,33 @@
+<div class="card">
+
+    <button routerLink="/create-team" class="btn vertical-gradient custom-animation">
+      <fa-icon [icon]="faPlus" class="custom-animation"></fa-icon>
+    </button>
+
+    <h1>My teams</h1>
+
+    <hr>
+
+    <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let team of teams">
+          <td>
+            {{ team.name }}
+          </td>
+          <td>{{ team.description }}</td>
+          <td style="text-align: end;">
+            <fa-icon [icon]="faDelete" class="icon"></fa-icon>
+            <fa-icon [icon]="faShare" class="icon"></fa-icon>
+            <fa-icon [icon]="faPen" class="icon"></fa-icon>
+            </td>
+        </tr>
+        </tbody>
+      </table>
+</div>

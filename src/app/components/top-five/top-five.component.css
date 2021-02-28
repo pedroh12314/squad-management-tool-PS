@@ -1,0 +1,50 @@
+h1 {
+    font-weight: bold;
+    color: #694598;
+    font-size: 22px;
+    margin: 0;
+    padding: 20px;
+    width: 150px;
+}
+
+h2 {
+    font-weight: bold;
+    color: #000000;
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+
+.row-score:after {
+    content: "";
+    display: table;
+    clear: both;
+    margin-bottom: 18px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 0px 18px;
+}
+
+.group-tiles {
+    background-color: #e7e1e6;
+   border-radius: 6px;
+
+   padding: 1px 3px 1px 3px;
+
+}
+
+.card-tiles {
+   background-color: white; 
+   border-radius: 4px;
+   height: 28px;
+   margin-top: 2px;
+   margin-bottom: 2px;
+   padding-left: 7px;
+}
