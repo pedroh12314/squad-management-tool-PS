@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     bottom: 0;
-    position: absolute;
+    position:sticky;
     width: 100%;
 }
 
