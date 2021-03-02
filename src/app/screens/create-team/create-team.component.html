@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="card">
+
+    <h1>{{title}}</h1>
+
+    <hr>
+
+    <div class="body">
+      <form (ngSubmit)="onSave()">
+      <h2>Team Information</h2>
+
+      <div class="row">
+        <div class="column">
+          <h3 class="input-text">Team name</h3>
+          <input type="text" placeholder="Insert team name" [(ngModel)]="team.name" required name="name">
+
+          <h3 class="input-text">Description</h3>
+          <textarea name="description" [(ngModel)]="team.description"></textarea>
+        </div>
+        <div class="column">
+          <h3 class="input-text">Team website</h3>
+          <input type="text" placeholder="https://site.com" name="website" [(ngModel)]="team.website" required>
+
+          <h3 class="input-text">Team Type</h3>
+          <label class="radio">Real
+            <input type="radio" [(ngModel)]="team.type" value="real" name="radio" >
+            <span class="checkmark"></span>
+          </label>
+          <label class="radio">Fantasy
+            <input type="radio" [(ngModel)]="team.type" value="fantasy" name="radio">
+            <span class="checkmark"></span>
+          </label>
+
+          <h3 class="input-text">Tags</h3>
+          <div class="container-tags">
+            <div class="tag" *ngFor="let tag of this.tags" >
+              <span style="float: left;">{{tag}}</span>
+              <span style="float: right; margin-left: 5px;" class="btn-animation" (click)="deleteTag(tag)"><fa-icon [icon]="faTimes"></fa-icon></span>
+            </div>
+
+            <input #box
+            (keyup)="addNewTag($event)"
+            class="input-tag"
+            placeholder="Insert a tag"
+            [(ngModel)]="newTag"
+            name="name">
+          </div>
+
+        </div>
+      </div>
+
+      <h2>Configure Squad</h2>
+
+      <div class="row">
+        <div class="column">
+
+          <button type="submit" class="vertical-gradient"  (click)="onSave()" >Save</button>
+
+        </div>
+        <div class="column">
+          <h3 class="input-text">Search players</h3>
+          <input type="text" placeholder="e.g. Ronal">
+        </div>
+      </div>
+
+    </form>
+    </div>
+  </div>
+</div>
