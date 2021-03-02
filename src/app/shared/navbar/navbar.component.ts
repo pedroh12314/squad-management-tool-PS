@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faArrowDown, faSortAmountDown, faSortDown, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ export class NavbarComponent implements OnInit {
 
   name: string = "Pedro Henrique Lemes"
 
+  faUser = faUserCircle
 
   constructor() { }
 

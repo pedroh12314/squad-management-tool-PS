@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+/* RESETANDO */
+
+html, body { height: 100%; width: 100%;}
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+    box-sizing: border-box;
+}
+
+/* INICIO */
 
 .gradient {
     background: linear-gradient(90deg, #c00f4f 0%, #8a206f 100%);
@@ -12,11 +20,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background: linear-gradient(180deg, #a9397a 0%, #8a206f 100%);
 }
 
-.custom-animation{
+.btn-animation{
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
 
+.btn-animation:hover {
+    transform: scale(1.2);
+}
+
+.card {
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.034);
+    padding: 7px;
+}
 
 .custom-animation:hover {
     transform: scale(1.07);
@@ -27,3 +46,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 13px;
     color: #a9397a;
 }
+

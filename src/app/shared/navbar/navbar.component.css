@@ -43,3 +43,11 @@
     height: 34px;
     width: 34px;
 }
+
+@media (max-width: 600px) {
+
+    .profile {
+        display: none;
+    }
+
+}
