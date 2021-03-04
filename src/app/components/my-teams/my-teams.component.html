@@ -7,14 +7,14 @@
     <h1>My teams</h1>
 
     <hr>
-
-    <div style="margin: 10px;">
+    <div class="loader" *ngIf="loading">Loading...</div>
+    
+    <div style="margin: 10px;" *ngIf="!loading">
       <table class="table" matSort (matSortChange)="sortData($event)">
         <thead>
         <tr>
           <th mat-sort-header="name">Name</th>
           <th mat-sort-header="description">Description</th>
-          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -26,10 +26,12 @@
             <td style="text-align: end;">
               <fa-icon [icon]="faDelete" class="icon btn-animation" (click)="deteleTeam(team)"></fa-icon>
               <fa-icon [icon]="faShare" class="icon btn-animation"></fa-icon>
-              <fa-icon [icon]="faPen" class="icon btn-animation" [routerLink]="['/create-team', team]"></fa-icon>
-              </td>
+              <a [routerLink]="'/create-team'" [state]="{data: team}"><fa-icon [icon]="faPen" class="icon btn-animation"></fa-icon>
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
+    
 </div>
