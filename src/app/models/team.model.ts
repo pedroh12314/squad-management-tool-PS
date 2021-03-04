@@ -1,8 +1,9 @@
 export interface Team {
-    name?: string,
+    id: string,
+    name: string,
     description?: string,
-    website?: string,
-    type?: string,
+    website: string,
+    type: string,
     tags?: string[],
-    formation?: string
+    formation?: string // tornar obrigatório
 }
