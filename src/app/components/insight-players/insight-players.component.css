@@ -1,3 +1,13 @@
+h1{
+    margin: 0 10px;
+    overflow: hidden;
+}
+
+h2 {
+    overflow: hidden;
+    font-size: 15px;
+}
+
 .row:after {
     content: "";
     display: table;
@@ -10,6 +20,7 @@
     width: 50%;
     text-align: center;
     height: 260px;
+    color: white;
 }
 
 .image {
@@ -29,6 +40,7 @@
     align-items: center;
     justify-content: center;
     font-size: 25px;
+    color: #000;
 }
 
 @media (max-width: 600px){

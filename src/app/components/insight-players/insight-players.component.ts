@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsightPlayersComponent implements OnInit {
 
-  name: string = "Pedro Henrique Lemes"
+  mostPickedPlayer: string = "Lionel Andrés Messi"
+  lessPickedPlayer: string = "Cristiano Ronaldo dos Santos Aveiro"
 
   constructor() { }
 
