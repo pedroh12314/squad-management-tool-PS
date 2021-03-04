@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Team } from 'src/app/models/team.model';
+import { map } from 'rxjs/operators';
+import { MyTeamsService } from 'src/app/services/my-teams.service';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-create-team',
@@ -18,24 +22,35 @@ export class CreateTeamComponent implements OnInit {
     tags: [],
     formation: ''
   } as Team
-  tags
 
-  title:string = 'Create your team'
+  title: string = 'Create your team'
+
+  isEdit: boolean = false
+
+  saveTouched: boolean = false
 
   newTag: string = ''
 
   faTimes = faTimes
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private myTeams: MyTeamsService
     ) { }
 
   ngOnInit(): void {
-    if(this.route.snapshot['params']['name'] != undefined){
-      this.title = 'Edit your team'
-      this.team = this.route.snapshot['params'] // ver para escrita, nao so leitura
-      this.tags = this.route.snapshot['params']['tags'].split(",")
-    }
+    this.route.paramMap
+      .pipe(
+        map(() => window.history.state)
+      )
+      .subscribe(state => {
+        if (state.data != undefined) {
+          this.team = state.data
+          this.title = "Edit your Team"
+          this.isEdit = true
+        }
+      });
   }
 
   deleteTag(tag) {
@@ -48,7 +63,6 @@ export class CreateTeamComponent implements OnInit {
 
       if (value.key == ';') {
         this.newTag = this.newTag.substring(0, this.newTag.length - 1)
-        console.log(this.newTag.length)
       }
       this.team.tags.push(this.newTag)
       this.newTag = ''
@@ -56,7 +70,17 @@ export class CreateTeamComponent implements OnInit {
 
   }
 
-  onSave() {
+  onSave(form: NgForm) {
+    if (form.valid){
+      if (this.isEdit) {
+        this.myTeams.editTeam(this.team)
+      }else {
+        this.myTeams.createTeam(this.team)
+      }
+      this.router.navigate(['home'])
+    } else {
+      this.saveTouched = true
+    }
   }
 
 }

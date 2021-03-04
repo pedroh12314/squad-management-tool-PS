@@ -61,6 +61,14 @@ input[type=text]::placeholder {
 color:#cccccc;
 }
 
+.has-invalid-text {
+    color: rgb(206, 5, 5) ;
+}
+
+.has-invalid-input {
+    border: 1px solid rgb(206, 5, 5) !important;
+}
+
 button[type=submit] {
     width: 100%;
     margin: 8px 0;
@@ -172,6 +180,29 @@ input[type=text] {
     height: 12px;
     border-radius: 50%;
     background:  #a0387e;
+}
+
+
+select {
+    margin-left: 50px;
+    width: 150px;
+    height:30px;
+    color:rgb(0, 0, 0);
+    border-radius: 4px;
+    background-color: white;
+}
+
+.field {
+    height: 650px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.player-tile {
+    background: linear-gradient(180deg, #ffffff 0%, #d6d6d6 100%);
+    border: 2px dashed rgb(211, 211, 211);
+    margin-top: 20px;
+    height: 75px;
 }
 
 @media (max-width: 600px){

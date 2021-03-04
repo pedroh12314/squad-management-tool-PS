@@ -6,64 +6,93 @@
     <hr>
 
     <div class="body">
-      <form (ngSubmit)="onSave()">
-      <h2>Team Information</h2>
+      <form novalidate #teamForm="ngForm" (ngSubmit)="onSave(teamForm)">
+        <h2>Team Information</h2>
 
-      <div class="row">
-        <div class="column">
-          <h3 class="input-text">Team name</h3>
-          <input type="text" placeholder="Insert team name" [(ngModel)]="team.name" required name="name">
+        <div class="row">
 
-          <h3 class="input-text">Description</h3>
-          <textarea name="description" [(ngModel)]="team.description"></textarea>
-        </div>
-        <div class="column">
-          <h3 class="input-text">Team website</h3>
-          <input type="text" placeholder="https://site.com" name="website" [(ngModel)]="team.website" required>
+          <div class="column">
+            <h3 class="input-text" [class.has-invalid-text]="!iptname.valid && saveTouched">Team name</h3>
+            <input #iptname="ngModel" [class.has-invalid-input]="!iptname.valid && saveTouched" ngModel required
+              name="name" type="text" placeholder="Insert team name" [(ngModel)]="team.name">
 
-          <h3 class="input-text">Team Type</h3>
-          <label class="radio">Real
-            <input type="radio" [(ngModel)]="team.type" value="real" name="radio" >
-            <span class="checkmark"></span>
-          </label>
-          <label class="radio">Fantasy
-            <input type="radio" [(ngModel)]="team.type" value="fantasy" name="radio">
-            <span class="checkmark"></span>
-          </label>
+            <h3 class="input-text">Description</h3>
+            <textarea name="description" [(ngModel)]="team.description">
+          </textarea>
+          </div>
+          <div class="column">
+            <h3 class="input-text" [class.has-invalid-text]="!iptwebsite.valid && saveTouched">Team website</h3>
+            <input #iptwebsite="ngModel" [class.has-invalid-input]="!iptwebsite.valid && saveTouched" ngModel
+              name="website" required type="text" placeholder="https://site.com" [(ngModel)]="team.website">
 
-          <h3 class="input-text">Tags</h3>
-          <div class="container-tags">
-            <div class="tag" *ngFor="let tag of this.tags" >
-              <span style="float: left;">{{tag}}</span>
-              <span style="float: right; margin-left: 5px;" class="btn-animation" (click)="deleteTag(tag)"><fa-icon [icon]="faTimes"></fa-icon></span>
+            <h3 class="input-text" [class.has-invalid-text]="(!real.valid || !fantasy.valid) && saveTouched">Team Type
+            </h3>
+            <label class="radio">Real
+              <input #real="ngModel" ngModel name="real" required ngModel type="radio" [(ngModel)]="team.type"
+                value="real" name="real">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio">Fantasy
+              <input #fantasy="ngModel" ngModel name="fantasy" required type="radio" [(ngModel)]="team.type"
+                value="fantasy" name="fantasy">
+              <span class="checkmark"></span>
+            </label>
+
+            <h3 class="input-text">Tags</h3>
+            <div class="container-tags">
+              <div class="tag" *ngFor="let tag of team.tags">
+                <span style="float: left;">{{tag}}</span>
+                <span style="float: right; margin-left: 5px;" class="btn-animation" (click)="deleteTag(tag)">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </span>
+              </div>
+
+              <input #box ngModel (keyup)="addNewTag($event)" class="input-tag" placeholder="Insert a tag"
+                [(ngModel)]="newTag" name="tag">
             </div>
 
-            <input #box
-            (keyup)="addNewTag($event)"
-            class="input-tag"
-            placeholder="Insert a tag"
-            [(ngModel)]="newTag"
-            name="name">
           </div>
-
         </div>
-      </div>
 
-      <h2>Configure Squad</h2>
+        <h2>Configure Squad</h2>
 
-      <div class="row">
-        <div class="column">
+        <div class="row">
+          <div class="column">
 
-          <button type="submit" class="vertical-gradient"  (click)="onSave()" >Save</button>
+            <div style="display: inline-flex;">
+              <h3 class="input-text" style="margin: 0;">Formation</h3>
+                <select >
+                  <option>Selecione</option>      
+                  <option>3 - 2 - 2 - 3</option> 
+                  <option>3 - 2 - 3 - 1</option>
+                  <option>3 - 4 - 3</option>
+                  <option>3 - 5 - 2</option>
+                  <option>4 - 2 - 3 - 1</option>
+                  <option>4 - 3 - 1 - 1</option>
+                  <option>4 - 3 - 2</option>
+                  <option>4 - 4 - 2</option>
+                  <option>4 - 5 - 1</option>
+                  <option>5 - 4 - 1</option>
+                </select>  
+            </div>
 
+            <div class="vertical-gradient field">
+
+            </div>
+            
+            <button type="submit" class="vertical-gradient" style="cursor: pointer;">Save</button>
+          </div>
+          <div class="column">
+            <h3 class="input-text">Search players</h3>
+            <input type="text" placeholder="e.g. Ronal" style="margin-bottom: 7px;">
+
+            <div class="player-tile">
+              
+            </div>
+          </div>
         </div>
-        <div class="column">
-          <h3 class="input-text">Search players</h3>
-          <input type="text" placeholder="e.g. Ronal">
-        </div>
-      </div>
 
-    </form>
+      </form>
     </div>
   </div>
 </div>
